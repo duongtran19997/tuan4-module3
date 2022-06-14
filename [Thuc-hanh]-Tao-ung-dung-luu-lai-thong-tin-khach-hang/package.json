@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16",
+    "qs": "^6.10.5"
+  }
+}
