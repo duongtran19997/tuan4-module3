@@ -41,7 +41,7 @@ async function showList(req, res) {
                 html += `<td>${items.id}</td>`
                 html += `<td>${items.name}</td>`
                 html += `<td>${items.price}</td>`
-                html += `<td><a href="/delete?id=${items.id}">delete</a></td>`
+                html += `<td><a href="/delete1?id=${items.id}">delete</a></td>`
                 html += `<td><a href="/update?id=${items.id}">update</a></td>`
                 html += '</tr>'
             })
@@ -101,7 +101,7 @@ const server = http.createServer(async (req, res) => {
                 })
             }
             break;
-        case '/delete':
+        case '/delete1':
             let idProduct = url.parse(req.url).query;
             let sqlDelete = `delete from products where ${idProduct}`;
             query(sqlDelete);
