@@ -1,0 +1,8 @@
+{
+  "name": "[Thuc-hanh]-Xay-dung-chuc-nang-dang-nhap-Xoa-session-trong-Node.js",
+  "version": "1.0.0",
+  "dependencies": {
+    "local-storage": "^2.0.0",
+    "qs": "^6.10.5"
+  }
+}

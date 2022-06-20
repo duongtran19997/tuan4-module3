@@ -42,17 +42,11 @@ handlers.infor = function (req, res) {
         //- Tạo thời gian hết hạn cho sessionId
         let expires = Date.now() + 1000*60*60;
         //- Tạo chuỗi để ghi vào sessionId
-        // let tokenSession = "{\"name\":\""+data.name+"\",\"email\":\""+data.email+"\",\"password\":\""+data.password+"\",\"expires\":"+expires+"}";
-       let tokenSession = {
-           'name': data.name,
-           'email': data.email,
-           'password': data.password,
-           'expires': expires
-       }
+        let tokenSession = "{\"name\":\""+data.name+"\",\"email\":\""+data.email+"\",\"password\":\""+data.password+"\",\"expires\":"+expires+"}";
         //- Tạo sessionId ngẫu nhiên
         let tokenId = createRandomString(20);
         //- Ghi sessionId vào server
-        createTokenSession(tokenId,JSON.stringify(tokenSession) );
+        createTokenSession(tokenId, tokenSession);
         //- Dùng localStorage để ghi lại sessionId phía client.
         localStorage.set('token', tokenId);
         //- Hiển thị trang infor
@@ -87,7 +81,7 @@ let createTokenSession = function (fileName, data){
 }
 //tạo ra chuỗi ngẫu nhiên
 let createRandomString = function (strLength){
-    strLength = typeof(strLength) == 'number' && strLength >0 ? strLength:false;
+    strLength = typeof(strLength) == 'number' & strLength >0 ? strLength:false;
     if (strLength){
         let possibleCharacter = 'abcdefghiklmnopqwerszx1234567890';
         let str='';
@@ -102,7 +96,6 @@ let createRandomString = function (strLength){
 let readSession = function(req, res){
     //lấy sessionId từ local storage
     let tokenID = localStorage.get("token");
-    console.log("token",tokenID);
     if (tokenID){
         let sessionString= "";
         let expires=0;
@@ -112,10 +105,7 @@ let readSession = function(req, res){
                 console.error(err)
                 return
             }
-            console.log("data",data)
             sessionString = String(data);
-            // sessionString = data;
-            console.log("session",sessionString);
             // lấy ra thời gian hết hạn của sessionId
             expires = JSON.parse(sessionString).expires;
             // lấy ra thời gian hiện tại
@@ -123,7 +113,7 @@ let readSession = function(req, res){
             // so sánh thời gian hết hạn với thời hạn của sessionID
             if (expires<now){
                 //Đã đăng nhập nhưng hết hạn
-                //Thực hành đăng nhập và lưu lại
+                //Thực hành đăng nhập và lư lại
                 let parseUrl = url.parse(req.url, true);
                 // //get the path
                 let path = parseUrl.pathname;

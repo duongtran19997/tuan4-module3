@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "init": "^0.1.2",
+    "mysql": "^2.18.1",
+    "qs": "^6.10.5"
+  }
+}
